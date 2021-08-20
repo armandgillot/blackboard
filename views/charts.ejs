@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>BlackBoard</title>
+
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <%- include('header'); %>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <%- include('menu'); %>
+
+        <div id="content-wrapper">
+
+          <div class="container-fluid">
+
+
+
+            <div class="row col-12">
+
+              <div class="row col-12 m-1">
+                <div class="card col-xl-3 col-sm-6 m-2 p-0">
+                  <div class="card-body">
+                    <canvas id="chartBar" width="100" height="100" data-male="<%= clientsMale %>"
+                      data-female="<%= clientsFemale %>"></canvas>
+                  </div>
+                </div>
+                <div class="card col-xl-3 col-sm-6 m-2 p-0">
+                  <div class="card-body">
+                    <canvas id="doughnut" width="100" height="100" data-read="<%= compteurRead %>"
+                      data-noread="<%= compteurNoRead %>"></canvas>
+                  </div>
+                </div>
+                <div class="card col-xl-3 col-sm-6 m-2 p-0">
+                  <div class="card-body">
+                    <canvas id="chartpie" width="100" height="100" data-ship="<%= compteurShip %>"
+                      data-noship="<%= compteurNoShip %>"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row col-12 m-1">
+                <div class="card col-xl-3 col-sm-6 m-2 p-0">
+                  <div class="card-body">
+                    <canvas id="linechart" width="100" height="100" data-avril="<%= totalCAByMonth[0].CA %>"
+                      data-aout="<%= totalCAByMonth[1].CA %>" data-octobre="<%= totalCAByMonth[2].CA %>"></canvas>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <!-- /.container-fluid -->
+
+            <!-- Sticky Footer -->
+            <%- include('footer'); %>
+
+          </div>
+          <!-- /.content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Page level plugin JavaScript-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.0/chart.min.js"
+          integrity="sha512-RGbSeD/jDcZBWNsI1VCvdjcDULuSfWTtIva2ek5FtteXeSjLfXac4kqkDRHVGf1TwsXCAqPTF7/EYITD0/CTqw=="
+          crossorigin="anonymous"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin.min.js"></script>
+        <script src="js/dataviz.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BlackBoard</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <%- include('header'); %>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <%- include('menu'); %>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <div class="list-group">
+            <% for (let i=0; i<tasks.length; i++) { 
+              var colorClass;
+              var textDateClose;
+              var textDue = 'Echéance :';
+              if(tasks[i].dateCloture){
+                textDateClose = 'Cloturé le ' + dateFormat(tasks[i].dateCloture);
+                colorClass = 'list-group-item-success'
+              }      
+              if(!tasks[i].dateCloture && new Date() > tasks[i].dateDue){
+                textDue = 'Echéance dépassée :';
+                colorClass = 'list-group-item-danger'
+              } %>
+            <a href="#" class="list-group-item list-group-item-action <%= colorClass %>">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><%= tasks[i].name %></h5>
+                  <small>Date de la demande: <%= dateFormat(tasks[i].dateInsert) %></small>
+                </div>
+                <p class="mb-1">Le client <%= tasks[i].owner %> souhaite un remboursement intergale de sa commande</p>
+                <small><%= textDue %> <%= dateFormat(tasks[i].dateDue) %>. <br> <%= textDateClose %></small>
+            </a>
+            <% } %>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <%- include('footer'); %>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+  </body>
+
+</html>
